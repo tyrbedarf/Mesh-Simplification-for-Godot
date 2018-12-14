@@ -11,16 +11,21 @@
 #include <vector>
 #include <map>
 
+#include "core/os/os.h"
 #include "core/math/vector3.h"
 #include "core/reference.h"
 #include "scene/resources/surface_tool.h"
 #include "scene/resources/material.h"
 #include "scene/resources/mesh.h"
 #include "scene/3d/mesh_instance.h"
-
-#include "symetric_matrix.h"
 #include "scene/resources/mesh.h"
 #include "scene/resources/mesh_library.h"
+#include "scene/3d/visual_instance.h"
+#include "scene/main/node.h"
+#include "core/vector.h"
+
+#include "symetric_matrix.h"
+
 
 enum Attributes {
 	NONE,

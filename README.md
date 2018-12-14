@@ -1,3 +1,6 @@
+# TODO: Update the readme. 
+
+
 # Fast-Quadric-Mesh-Simplification
 Mesh triangle reduction using quadrics - for Windows, OSX and Linux (thx Chris Rorden)
 

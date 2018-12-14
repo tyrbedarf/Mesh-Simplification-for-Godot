@@ -94,7 +94,8 @@ size_t ProceduralMesh::get_index(Vector3 v)
 	return r;
 }
 
-Ref<SurfaceTool> ProceduralMesh::get_surface() {
+Ref<SurfaceTool> ProceduralMesh::get_surface()
+{
 	Ref<SurfaceTool> result = memnew(SurfaceTool());
 
 	result.ptr()->begin(Mesh::PrimitiveType::PRIMITIVE_TRIANGLES);
@@ -136,7 +137,7 @@ void ProceduralMesh::simplify_mesh(int target_count, double agressiveness, bool 
 
 	for (int iteration = 0; iteration < 100; iteration++)
 	{
-		if (triangle_count - deleted_triangles <= target_count)break;
+		if (triangle_count - deleted_triangles <= target_count) break;
 
 		// update mesh once in a while
 		if (iteration % 5 == 0)
@@ -156,8 +157,12 @@ void ProceduralMesh::simplify_mesh(int target_count, double agressiveness, bool 
 		double threshold = 0.000000001*pow(double(iteration + 3), agressiveness);
 
 		// target number of triangles reached ? Then break
-		if ((verbose) && (iteration % 5 == 0)) {
-			printf("iteration %d - triangles %d threshold %g\n", iteration, triangle_count - deleted_triangles, threshold);
+		if ((verbose) && (iteration % 5 == 0))
+		{
+			printf("iteration %d - triangles %d threshold %g\n",
+				iteration,
+				triangle_count - deleted_triangles,
+				threshold);
 		}
 
 		// remove vertices & mark deleted triangles
@@ -214,6 +219,7 @@ void ProceduralMesh::simplify_mesh(int target_count, double agressiveness, bool 
 				v0.tcount = tcount;
 				break;
 			}
+
 			// done?
 			if (triangle_count - deleted_triangles <= target_count) break;
 		}
@@ -249,7 +255,8 @@ void ProceduralMesh::simplify_mesh_lossless(bool verbose)
 		// If it does not, try to adjust the 3 parameters
 		//
 		double threshold = DBL_EPSILON; //1.0E-3 EPS;
-		if (verbose) {
+		if (verbose)
+		{
 			printf("lossless iteration %d\n", iteration);
 		}
 
@@ -309,6 +316,7 @@ void ProceduralMesh::simplify_mesh_lossless(bool verbose)
 				break;
 			}
 		}
+
 		if (deleted_triangles <= 0) break;
 		deleted_triangles = 0;
 	}
@@ -453,11 +461,13 @@ void ProceduralMesh::update_mesh(int iteration)
 		vertices[i].tstart = 0;
 		vertices[i].tcount = 0;
 	}
+
 	loopi(0, triangles.size())
 	{
 		Triangle &t = triangles[i];
 		loopj(0, 3) vertices[t.v[j]].tcount++;
 	}
+
 	int tstart = 0;
 	loopi(0, vertices.size())
 	{
